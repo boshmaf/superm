@@ -1,3 +1,18 @@
+/*
+ * superm.c
+ * 
+ * A super Linux rm command for removing billions of files in a directory
+ *
+ * Usage:
+ *   cp superm.c /path/to/dir/
+ *   gcc superm.c -o superm
+ *   ./superm
+ *
+ * Warning: This program will remove all files in the dir, including itself.
+ *
+ * Released under LGPL-3.0
+ *
+ */
 #define _GNU_SOURCE
 #include <dirent.h>     /* Defines DT_* constants */
 #include <fcntl.h>
@@ -17,7 +32,7 @@ struct linux_dirent {
    char           d_name[];
 };
 
-#define BUF_SIZE 1024*1024*5
+#define BUF_SIZE 1024*1024*5  /* Increase as needed */
 
 int
 main(int argc, char *argv[])
